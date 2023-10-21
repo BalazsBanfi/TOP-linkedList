@@ -29,9 +29,6 @@ function linkedList() {
 
         }
 
-
-
-
         toString() {
             console.log('The list is: ', this);
         }
@@ -43,3 +40,5 @@ function linkedList() {
 
 let list = LinkedList()
 linkedList.append(8);
+linkedList.append(10);
+linkedList.toString()
