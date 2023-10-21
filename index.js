@@ -7,7 +7,7 @@ const oneNode = (value = null, nextNode = null) => {
 
 const linkedList = () => {
   let head = null;
-
+  let size = 0;
   //append new Node to the end of the list
   const append = (value) => {
     //create new node
@@ -21,17 +21,14 @@ const linkedList = () => {
       while (tail.nextNode !== null) {
         tail = tail.nextNode;
       }
-
       tail.nextNode = newNode;
     }
-
-    const toString = () => {
-      console.log("aa");
-    };
+    size++;
   };
   return {
-    append,
     head,
+    append,
+    size,
     toString,
   };
 };
@@ -41,3 +38,5 @@ console.log(list);
 list.append(8);
 list.append(10);
 list.toString();
+console.log(list.size);
+console.log(list.nextNode);
