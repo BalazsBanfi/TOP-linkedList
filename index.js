@@ -67,6 +67,22 @@ const linkedList = () => {
     return head;
   };
 
+  const atNode = (l) => {
+    let tail = null;
+    if (head === null) {
+      return null;
+    } else {
+      tail = head;
+      for (let i = 1; i < l; i++) {
+        tail = tail.nextNode;
+      }
+    }
+    console.log('The '+l+'. node in list: '+ tail.value, tail);
+    return tail;
+  };
+
+
+
   const toString = () => {
     let string1 = "Node: " + head.value;
     let tail = head;
@@ -86,6 +102,7 @@ const linkedList = () => {
     size,
     headNode,
     tailNode,
+    atNode,
     toString,
   };
 };
@@ -103,5 +120,6 @@ list.prepend(1);
 list.size();
 list.headNode();
 list.tailNode();
-
+list.atNode(2);
+list.atNode(5);
 list.toString();
