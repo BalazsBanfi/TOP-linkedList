@@ -44,7 +44,7 @@ const linkedList = () => {
   };
 
   const size = () => {
-    console.log("Total nodes in list: "+length);
+    console.log("Total nodes in list: " + length);
     //return length;
   };
 
@@ -67,7 +67,6 @@ const linkedList = () => {
     //return head;
   };
 
-
   const atNode = (l) => {
     let tail = null;
     if (head === null || l < 1) {
@@ -76,13 +75,13 @@ const linkedList = () => {
       tail = head;
       for (let i = 1; i < l; i++) {
         if (!tail.nextNode) {
-          console.log(l + ' is out of range, max value: ' + length);
+          console.log(l + " is out of range, max value: " + length);
           return null;
         }
         tail = tail.nextNode;
       }
     }
-    console.log('The '+l+'. node in list: '+ tail.value, tail);
+    console.log("The " + l + ". node in list: " + tail.value, tail);
     //return tail;
   };
 
@@ -92,15 +91,14 @@ const linkedList = () => {
       return null;
     } else {
       tail = head;
-      for (let i = 1; i < length; i++) {
+      while (tail.nextNode.nextNode) {
         tail = tail.nextNode;
-        console.log(tail.value);
       }
-      return tail;
-
+      console.log('Pop: ', tail.nextNode.value, tail.nextNode)
+      tail.nextNode = null;
+      //return tail;
     }
   };
-
 
   const toString = () => {
     let string1 = "Node: " + head.value;
@@ -145,4 +143,6 @@ list.atNode(5);
 list.atNode(2);
 list.atNode(8);
 list.pop();
+list.pop();
+
 list.toString();
