@@ -94,21 +94,64 @@ const linkedList = () => {
       while (tail.nextNode.nextNode) {
         tail = tail.nextNode;
       }
-      console.log('Pop: ', tail.nextNode.value, tail.nextNode)
+      console.log("Pop: ", tail.nextNode.value, tail.nextNode);
       tail.nextNode = null;
       //return tail;
     }
   };
 
+  const contains = (x) => {
+    let tail = null;
+    if (head === null) {
+      return null;
+    } else {
+      tail = head;
+
+      while (tail.nextNode) {
+        tail = tail.nextNode;
+        if (tail.value == x) {
+          console.log(x + " is in the list", tail);
+          return true;
+        }
+      }
+
+      console.log(x + " is not in the list");
+      return false;
+    }
+    //return tail;
+  };
+
+  const find = (x) => {
+    let tail = null;
+    if (head === null) {
+      return null;
+    } else {
+      tail = head;
+      let i = 1;
+      while (tail.nextNode) {
+        tail = tail.nextNode;
+        if (tail.value == x) {
+          console.log(x + " is in the list, no. ", i+1);
+          return;
+        }
+        i++;
+      }
+
+      console.log(x + " is not in the list");
+      return;
+    }
+    //return tail;
+  };
+
   const toString = () => {
-    let string1 = "Node: " + head.value;
+    let string1 = " " + head.value;
     let tail = head;
     while (tail.nextNode) {
-      string1 += " --> Node: " + tail.nextNode.value;
+      string1 += " --> " + tail.nextNode.value;
       tail = tail.nextNode;
     }
-    console.log(string1);
-    return string1;
+    console.log(string1 + " --> null");
+    //return string1;
   };
 
   return {
@@ -121,6 +164,8 @@ const linkedList = () => {
     tailNode,
     atNode,
     pop,
+    contains,
+    find,
     toString,
   };
 };
@@ -144,5 +189,12 @@ list.atNode(2);
 list.atNode(8);
 list.pop();
 list.pop();
+list.contains(-3);
+list.contains(5);
+list.contains(20);
 
+list.find(2);
+list.find(3);
+
+list.find(5);
 list.toString();
