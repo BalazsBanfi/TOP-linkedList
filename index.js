@@ -167,6 +167,28 @@ const linkedList = () => {
     //return tail;
   };
 
+  const removeAt = (index) => {
+    let tail = null;
+    if (head === null) {
+      return null;
+    } else {
+      tail = head;
+      let i = 1;
+      while (tail.nextNode) {
+        if (i === index) {
+          tail.nextNode = tail.nextNode.nextNode;
+          return;
+        }
+        tail = tail.nextNode;
+        i++;
+      }
+
+      console.log(x + " is not in the list");
+      return;
+    }
+    //return tail;
+  };
+
   const toString = () => {
     let string1 = " " + head.value;
     let tail = head;
@@ -191,6 +213,7 @@ const linkedList = () => {
     contains,
     find,
     insertAt,
+    removeAt,
     toString,
   };
 };
@@ -217,11 +240,10 @@ list.pop();
 list.contains(-3);
 list.contains(5);
 list.contains(20);
-
 list.find(2);
 list.find(3);
-
 list.find(5);
-
-list.insertAt(3, 44);
+list.insertAt(3, 34);
+list.toString();
+list.removeAt(3);
 list.toString();
