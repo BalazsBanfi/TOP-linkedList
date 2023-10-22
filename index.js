@@ -131,9 +131,33 @@ const linkedList = () => {
       while (tail.nextNode) {
         tail = tail.nextNode;
         if (tail.value == x) {
-          console.log(x + " is in the list, no. ", i+1);
+          console.log(x + " is in the list, no. ", i + 1);
           return;
         }
+        i++;
+      }
+
+      console.log(x + " is not in the list");
+      return;
+    }
+    //return tail;
+  };
+
+  const insertAt = (index, value) => {
+    let tail = null;
+    const newNode = oneNode(value);
+    if (head === null) {
+      return null;
+    } else {
+      tail = head;
+      let i = 1;
+      while (tail.nextNode) {
+        if (i === index) {
+          newNode.nextNode = tail.nextNode;
+          tail.nextNode = newNode;
+          return;
+        }
+        tail = tail.nextNode;
         i++;
       }
 
@@ -166,6 +190,7 @@ const linkedList = () => {
     pop,
     contains,
     find,
+    insertAt,
     toString,
   };
 };
@@ -197,4 +222,6 @@ list.find(2);
 list.find(3);
 
 list.find(5);
+
+list.insertAt(3, 44);
 list.toString();
