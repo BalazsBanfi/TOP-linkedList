@@ -44,13 +44,13 @@ const linkedList = () => {
   };
 
   const size = () => {
-    console.log("Total nodes in list: ", length);
-    return length;
+    console.log("Total nodes in list: "+length);
+    //return length;
   };
 
   const headNode = () => {
     console.log("The first node in list: ", head.value, " ", head);
-    return head;
+    //return head;
   };
 
   const tailNode = () => {
@@ -64,22 +64,26 @@ const linkedList = () => {
       }
     }
     console.log("The last node in list: ", tail.value, " ", tail);
-    return head;
+    //return head;
   };
 
 
   const atNode = (l) => {
     let tail = null;
-    if (head === null) {
+    if (head === null || l < 1) {
       return null;
     } else {
       tail = head;
       for (let i = 1; i < l; i++) {
+        if (!tail.nextNode) {
+          console.log(l + ' is out of range, max value: ' + length);
+          return null;
+        }
         tail = tail.nextNode;
       }
     }
     console.log('The '+l+'. node in list: '+ tail.value, tail);
-    return tail;
+    //return tail;
   };
 
   const pop = () => {
@@ -136,7 +140,9 @@ list.prepend(1);
 list.size();
 list.headNode();
 list.tailNode();
-list.atNode(2);
+list.atNode(-2);
 list.atNode(5);
+list.atNode(2);
+list.atNode(8);
 list.pop();
 list.toString();
