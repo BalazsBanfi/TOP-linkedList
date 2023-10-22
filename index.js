@@ -67,6 +67,7 @@ const linkedList = () => {
     return head;
   };
 
+
   const atNode = (l) => {
     let tail = null;
     if (head === null) {
@@ -81,6 +82,20 @@ const linkedList = () => {
     return tail;
   };
 
+  const pop = () => {
+    let tail = null;
+    if (head === null) {
+      return null;
+    } else {
+      tail = head;
+      for (let i = 1; i < length; i++) {
+        tail = tail.nextNode;
+        console.log(tail.value);
+      }
+      return tail;
+
+    }
+  };
 
 
   const toString = () => {
@@ -103,6 +118,7 @@ const linkedList = () => {
     headNode,
     tailNode,
     atNode,
+    pop,
     toString,
   };
 };
@@ -122,4 +138,5 @@ list.headNode();
 list.tailNode();
 list.atNode(2);
 list.atNode(5);
+list.pop();
 list.toString();
