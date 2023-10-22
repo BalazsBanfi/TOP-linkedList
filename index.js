@@ -7,15 +7,17 @@ const oneNode = (value = null, nextNode = null) => {
 
 const linkedList = () => {
   let head = null;
-  let size = 0;
+  let length = 0;
   //append new Node to the end of the list
+
   const append = (value) => {
     //create new node
     const newNode = oneNode(value);
+    length++;
     // if empty list, the new node will be the head
     // else the new node goes to the end of the list
     if (head === null) {
-      head = newNode;
+      return (head = newNode);
     } else {
       let tail = head;
       while (tail.nextNode !== null) {
@@ -23,20 +25,83 @@ const linkedList = () => {
       }
       tail.nextNode = newNode;
     }
-    size++;
   };
+
+  const prepend = (value) => {
+    //create new node
+    const newNode = oneNode(value);
+    length++;
+    // if empty list, the new node will be the head
+    // else the new node goes to the end of the list
+    if (head === null) {
+      return (head = newNode);
+    } else {
+      let tail = head;
+
+      head = newNode;
+      head.nextNode = tail;
+    }
+  };
+
+  const size = () => {
+    console.log("Total nodes in list: ", length);
+    return length;
+  };
+
+  const headNode = () => {
+    console.log("The first node in list: ", head.value, " ", head);
+    return head;
+  };
+
+  const tailNode = () => {
+    let tail = null;
+    if (head === null) {
+      return null;
+    } else {
+      tail = head;
+      while (tail.nextNode !== null) {
+        tail = tail.nextNode;
+      }
+    }
+    console.log("The last node in list: ", tail.value, " ", tail);
+    return head;
+  };
+
+  const toString = () => {
+    let string1 = "Node: " + head.value;
+    let tail = head;
+    while (tail.nextNode) {
+      string1 += " --> Node: " + tail.nextNode.value;
+      tail = tail.nextNode;
+    }
+    console.log(string1);
+    return string1;
+  };
+
   return {
     head,
     append,
+    prepend,
+    length,
     size,
+    headNode,
+    tailNode,
     toString,
   };
 };
 
-let list = linkedList();
-console.log(list);
-list.append(8);
-list.append(10);
+const list = linkedList();
+
+list.prepend(4);
+list.append(5);
+list.append(6);
+list.append(7);
+list.prepend(3);
+list.prepend(2);
+list.prepend(1);
+
+list.size();
+list.headNode();
+list.tailNode();
+
 list.toString();
-console.log(list.size);
-console.log(list.nextNode);
